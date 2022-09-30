@@ -2,16 +2,18 @@ import { FC, useEffect, memo } from 'react'
 
 interface Props {
     id: number,
-    task: string
+    task: string,
+    handleDelete: Function
+
 }
 
-const Task:FC<Props> = ({task}) => {
+const Task:FC<Props> = ({id, task, handleDelete}) => {
     useEffect(() => {
         console.log('Rendering <Task />', task)
     })
 
     return (
-        <li>{task}</li>
+        <li>{task}  <button onClick={() => handleDelete(id)}>X</button></li>
     )
 }
 
