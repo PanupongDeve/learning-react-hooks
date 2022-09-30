@@ -30,11 +30,11 @@ function App() {
   const handleSearch = () => {
     setTerm(task)
   }
-
-  const filteredTodoList = todoList.filter((todo: Todo) => {
+  const filteredTodoList = useMemo(() => todoList.filter((todo: Todo) => {
     console.log('Filtering...')
-    return todo.task.toLowerCase().includes(term.toLocaleLowerCase())
-   })
+    return todo.task.toLowerCase().includes(term.toLowerCase())
+   }), [todoList, term])
+   
 
   return (
     <>
